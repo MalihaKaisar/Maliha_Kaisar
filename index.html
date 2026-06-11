@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maliha Kaisar — AI/ML Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #0D0F14;
+      --surface: #13161E;
+      --card:    #181C26;
+      --ink:     #E8EAF0;
+      --mid:     #8A8FA8;
+      --rule:    #232840;
+      --accent:  #7C9EFF;
+      --accent2: #A78BFA;
+      --tag-bg:  #1B2240;
+      --tag-txt: #7C9EFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(13,15,20,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 6vw, 5rem);
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    main { padding-top: 60px; }
+    section {
+      padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 6vw, 5rem);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      color: var(--ink);
+    }
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: calc(100vh - 60px);
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: clamp(3rem, 8vw, 6rem);
+      padding-bottom: clamp(3rem, 8vw, 6rem);
+      max-width: 860px;
+      margin: 0 auto;
+      padding-left: clamp(1.5rem, 6vw, 5rem);
+      padding-right: clamp(1.5rem, 6vw, 5rem);
+      position: relative;
+    }
+    /* subtle grid background on hero */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--rule) 1px, transparent 1px),
+        linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.35;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .hero-heading {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.4rem, 3.4vw, 2rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .hero-heading em { font-style: italic; color: var(--accent); }
+    .hero-bio {
+      font-size: 0.97rem;
+      color: var(--mid);
+      max-width: 620px;
+      margin-bottom: 2.5rem;
+      line-height: 1.9;
+      position: relative;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; position: relative; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0D0F14;
+      border: 1.5px solid var(--accent);
+      font-weight: 600;
+    }
+    .btn-primary:hover { background: #9ab4ff; border-color: #9ab4ff; }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--rule);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+
+    /* ── HERO LAYOUT WITH PHOTO ── */
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3.5rem;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    }
+    .hero-text { position: relative; }
+    .hero-photo-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .hero-photo-frame {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--rule);
+      background: var(--card);
+      position: relative;
+      box-shadow: 0 0 0 6px rgba(124,158,255,0.08), 0 0 40px rgba(124,158,255,0.1);
+    }
+    .hero-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    /* placeholder shown when no real photo */
+
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-wrap { order: -1; display: flex; flex-direction: column; align-items: center; }
+      .hero-photo-frame { width: 140px; height: 140px; }
+    }
+
+    /* ── ABOUT ── */
+    .about-bio {
+      font-size: 0.97rem;
+      color: var(--mid);
+      line-height: 1.85;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+    .about-highlight {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(124,158,255,0.08);
+      border: 1px solid rgba(124,158,255,0.2);
+      border-radius: 30px;
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+    .about-highlight::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .about-links {
+      display: flex; flex-wrap: wrap; gap: 0.65rem;
+    }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.5rem 0.9rem;
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      background: var(--card);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); background: var(--surface); }
+    .social-link svg { flex-shrink: 0; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 1.25rem 1.25rem 1rem;
+    }
+    .skill-card h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-txt);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .project-card {
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      background: var(--card);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(124,158,255,0.07);
+    }
+    .project-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem; margin-bottom: 0.5rem;
+    }
+    .project-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .project-card p { font-size: 0.9rem; color: var(--mid); margin-bottom: 0.9rem; }
+    .project-link {
+      font-size: 0.8rem; font-weight: 500; color: var(--accent);
+      text-decoration: none; white-space: nowrap;
+    }
+    .project-link:hover { text-decoration: underline; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; gap: 1.75rem; }
+    .pub-item {
+      padding: 1.25rem 1.25rem 1.25rem 1.4rem;
+      border-left: 3px solid var(--rule);
+      background: var(--card);
+      border-radius: 0 8px 8px 0;
+      transition: border-color 0.2s;
+    }
+    .pub-item:hover { border-color: var(--accent); }
+    .pub-venue {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--accent2); margin-bottom: 0.35rem;
+    }
+    .pub-item h3 {
+      font-size: 0.97rem; font-weight: 500; line-height: 1.55;
+      margin-bottom: 0.3rem; color: var(--ink);
+    }
+    .pub-authors { font-size: 0.82rem; color: var(--mid); }
+    .pub-link {
+      display: inline-block; margin-top: 0.55rem; margin-right: 1rem;
+      font-size: 0.8rem; font-weight: 500; color: var(--accent);
+      text-decoration: none;
+    }
+    .pub-link:hover { text-decoration: underline; }
+    .pub-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    #contact h2 { margin-bottom: 0.75rem; }
+    #contact > p { color: var(--mid); margin-bottom: 2rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--mid);
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Maliha Kaisar</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <!-- Left: text -->
+      <div class="hero-text">
+        <p class="hero-eyebrow">AI / ML Researcher</p>
+        <h1 class="hero-heading">Hi, I'm <em>Maliha Kaisar</em>.<br>I build intelligent systems.</h1>
+        <p class="hero-bio">
+          I am a Computer Science and Engineering graduate from Sylhet Engineering College and a Research Intern at Elite Research Lab LLC. My work focuses on Machine Learning and Artificial Intelligence, with an emphasis on modern language intelligence systems. I work across large language models (LLMs), Retrieval-Augmented Generation (RAG), information retrieval, and applied machine learning. I design systems that combine knowledge, reasoning, and data to create more reliable and grounded AI. My current work explores LLM-based pipelines, retrieval systems, and evaluation methods to improve how machines understand and generate language.
+        </p>
+        <div class="hero-cta">
+          <a href="#publications" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            View Publications
+          </a>
+          <a href="#projects" class="btn btn-outline">See Projects</a>
+        </div>
+      </div>
+      <!-- Right: photo -->
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-frame">
+          <!--
+           path here
+          -->
+          <img src="images\IMG_065s4.JPG.jpeg" alt="Maliha Kaisar" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2>Background</h2>
+
+    <p class="about-bio">
+      I research Machine Learning and Artificial Intelligence with a focus on modern language intelligence systems — specifically large language models (LLMs), Retrieval-Augmented Generation (RAG), and information retrieval. I design systems that combine knowledge, reasoning, and data to create more reliable and grounded AI. I hold a Bachelor's in Computer Science and Engineering from Sylhet Engineering College, and currently work as a Researcher at Elite Research Lab LLC.
+    </p>
+
+    <div class="about-highlight">
+      Open to PhD opportunities, research collaborations &amp; advanced AI positions
+    </div>
+
+    <div class="about-links">
+      <a href="https://github.com/MalihaKaisar" target="_blank" rel="noopener" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/maliha-k-048802212" target="_blank" rel="noopener" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:malihakaisar100@gmail.com" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://scholar.google.com/citations?user=y_LglgEAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 0 12 20.055a11.952 11.952 0 0 0-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
+        Google Scholar
+      </a>
+      <a href="https://www.researchgate.net/profile/Maliha-Kaisar?ev=hdr_xprf" target="_blank" rel="noopener" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9 9h4a2 2 0 0 1 0 4H9v4"/><line x1="9" y1="9" x2="9" y2="17"/></svg>
+        ResearchGate
+      </a>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Expertise</p>
+    <h2>Skills &amp; Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Research Areas</h3>
+        <div class="skill-tags">
+          <span class="tag">LLMs</span>
+          <span class="tag">RAG</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Information Retrieval</span>
+          <span class="tag">Deep Learning</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>ML / DL Frameworks</h3>
+        <div class="skill-tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">Keras</span>
+          <span class="tag">HuggingFace</span>
+          <span class="tag">Transformers</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">R</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Data &amp; Analysis</h3>
+        <div class="skill-tags">
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Tools &amp; Infra</h3>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">Jupyter</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Linux</span>
+          <span class="tag">WandB</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Writing &amp; Research</h3>
+        <div class="skill-tags">
+          <span class="tag">LaTeX</span>
+          <span class="tag">IEEE Format</span>
+          <span class="tag">Research Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Work</p>
+    <h2>Projects</h2>
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>LLM-Based RAG Pipeline</h3>
+          <a href="https://github.com/MalihaKaisar" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+        </div>
+        <p>A retrieval-augmented generation system built on top of large language models to improve grounded and factual text generation. Combines dense retrieval with LLM inference for improved answer quality over knowledge-intensive tasks.</p>
+        <div class="skill-tags">
+          <span class="tag">RAG</span>
+          <span class="tag">LLMs</span>
+          <span class="tag">HuggingFace</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Bangla Authorship Attribution System</h3>
+          <a href="https://github.com/MalihaKaisar" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+        </div>
+        <p>A hybrid deep learning and stylometric framework for identifying authors in Bangla literary texts. Combines word embeddings, character-level features, and neural classifiers — resulting in a published IEEE paper.</p>
+        <div class="skill-tags">
+          <span class="tag">Deep Learning</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Bangla NLP</span>
+          <span class="tag">PyTorch</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Sentiment Analysis on Israel-Palestine Discourse</h3>
+          <a href="https://github.com/MalihaKaisar" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+        </div>
+        <p>A deep learning pipeline for analysing public sentiment across social media data on the Israel-Palestine conflict. Presented at ICCCNT 2025, IIT Indore, India.</p>
+        <div class="skill-tags">
+          <span class="tag">Sentiment Analysis</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <p class="section-label">Research</p>
+    <h2>Publications</h2>
+    <div class="pub-list">
+
+      <div class="pub-item">
+        <p class="pub-venue">ICCCIT 2025 · IEEE</p>
+        <h3>A Hybrid Deep Learning and Stylometric Feature-Based Framework for Authorship Attribution in Bangla Literature</h3>
+        <p class="pub-authors"><strong>Maliha Kaisar</strong> et al.</p>
+        <div class="pub-links">
+          <a href="https://ieeexplore.ieee.org/document/11490395" target="_blank" rel="noopener" class="pub-link">IEEE Xplore →</a>
+          <a href="https://www.researchgate.net/publication/404885406_A_Hybrid_Deep_Learning_and_Stylometric_Feature-Based_Framework_for_Authorship_Attribution_in_Bangla_Literature" target="_blank" rel="noopener" class="pub-link">ResearchGate →</a>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-venue">IEEE SPICSCON 2025 · RU, Bangladesh</p>
+        <h3>Authorship Attribution in Bangla Literature: A Comparative Study of Word Embedding and Deep Learning Models</h3>
+        <p class="pub-authors"><strong>Maliha Kaisar</strong> et al.</p>
+        <div class="pub-links">
+          <a href="https://ieeexplore.ieee.org/document/11504247" target="_blank" rel="noopener" class="pub-link">IEEE Xplore →</a>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-venue">ICCCNT 2025 · IIT Indore, India · Accepted &amp; Presented</p>
+        <h3>Analyzing Public Sentiments on the Israel-Palestine Conflict: A Deep Learning Approach</h3>
+        <p class="pub-authors"><strong>Maliha Kaisar</strong> et al.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Get in Touch</p>
+    <h2>Let's Connect</h2>
+    <p>Open to PhD opportunities, research collaborations, and advanced research positions.<br>The best way to reach me is by email.</p>
+    <div class="contact-links">
+      <a href="mailto:malihakaisar100@gmail.com" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send Email
+      </a>
+      <a href="https://github.com/MalihaKaisar" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+      <a href="https://www.linkedin.com/in/maliha-k-048802212" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=y_LglgEAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener" class="btn btn-outline">Google Scholar</a>
+      <a href="https://www.researchgate.net/profile/Maliha-Kaisar?ev=hdr_xprf" target="_blank" rel="noopener" class="btn btn-outline">ResearchGate</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Maliha Kaisar · AI/ML Researcher</p>
+</footer>
+
+</body>
+</html>
